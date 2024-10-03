@@ -9,6 +9,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,7 +19,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -35,7 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
@@ -103,12 +104,8 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
             .background(Color.White)
             .fillMaxHeight()
     ) {
-        Row(
-            Modifier
-                .padding(20.dp)
-        ) {
+        Spacer(Modifier.padding(20.dp))
 
-        }
         Row(
             Modifier
                 .fillMaxWidth()
@@ -123,12 +120,8 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
             )
         }
 
-        Row(
-            Modifier
-                .padding(20.dp)
-        ) {
+        Spacer(Modifier.padding(20.dp))
 
-        }
         Row(
             Modifier
                 .fillMaxWidth(),
@@ -141,12 +134,8 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
             )
         }
 
-        Row(
-            Modifier
-                .padding(20.dp)
-        ) {
+        Spacer(Modifier.padding(20.dp))
 
-        }
         Row(
             Modifier
                 .fillMaxWidth(),
@@ -163,12 +152,9 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
                 visualTransformation = PhoneVisualTransformation() //aplicação da máscara de telefone | (xx) xxxxx-xxxx
             )
         }
-        Row(
-            Modifier
-                .padding(20.dp)
-        ) {
 
-        }
+        Spacer(Modifier.padding(20.dp))
+
         Row(
             Modifier
                 .fillMaxWidth(),
@@ -183,24 +169,48 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
             }
         }
 
-        Row(
-            Modifier
-                .padding(10.dp)
-        ){
+        Spacer(Modifier.padding(10.dp))
 
-        }
+        HorizontalDivider()
 
-        Divider()
+        Spacer(Modifier.padding(5.dp))
 
         Row(
             Modifier
-                .padding(10.dp)
-        ){
-
+                .fillMaxWidth(),
+            Arrangement.Center
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth(0.4f),
+                Arrangement.Center
+            ) {
+                Text(
+                    text = "Nome",
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+            Column(
+                Modifier
+                    .fillMaxWidth(0.6f),
+                Arrangement.Center
+            ) {
+                Text(
+                    text = "Telefone",
+                    textAlign = TextAlign.Center,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
         }
+
+        Spacer(Modifier.padding(5.dp))
+
+        HorizontalDivider()
 
         LazyColumn {
             items(pessoaList) {pessoa ->
+                Spacer(Modifier.padding(5.dp))
                 Row(
                     Modifier
                         .fillMaxWidth(),
@@ -208,20 +218,21 @@ fun App(viewModel: PessoaViewModel, mainActivity: MainActivity) {
                 ){
                     Column(
                         Modifier
-                            .fillMaxWidth(0.5f),
+                            .fillMaxWidth(0.4f),
                         Arrangement.Center
                     ) {
                         Text(text = "${pessoa.nome}")
                     }
                     Column(
                         Modifier
-                            .fillMaxWidth(0.5f),
+                            .fillMaxWidth(0.6f),
                         Arrangement.Center
                     ) {
                         Text(text = "${pessoa.telefone}")
                     }
                 }
-                Divider()
+                Spacer(Modifier.padding(5.dp))
+                HorizontalDivider()
             }
         }
     }
